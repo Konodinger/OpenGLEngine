@@ -27,8 +27,9 @@ add_definitions(-D_MY_OPENGL_IS_33_)
 project(testOpenGL)
 
 add_executable(${PROJECT_NAME} main.cpp
-                                Square.cpp
-                                Shader.cpp)
+                                meshing/Square.cpp
+                                meshing/Mesh.cpp
+                                shading/Shader.cpp)
 
 target_sources(${PROJECT_NAME} PRIVATE dep/glad/src/glad.c)
 target_include_directories(${PROJECT_NAME} PRIVATE dep/glad/include/)
@@ -40,6 +41,12 @@ add_subdirectory(dep/glm)
 target_link_libraries(${PROJECT_NAME} glm)
 
 target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS})
+
+target_include_directories(${PROJECT_NAME} PRIVATE input/)
+target_include_directories(${PROJECT_NAME} PRIVATE meshing/)
+target_include_directories(${PROJECT_NAME} PRIVATE shading/)
+target_include_directories(${PROJECT_NAME} PRIVATE camera/)
+target_include_directories(${PROJECT_NAME} PRIVATE rendering/)
 
 add_custom_command(TARGET ${PROJECT_NAME}
   POST_BUILD

@@ -14,7 +14,7 @@ using namespace glm;
 
 class Square {
     public:
-        explicit Square(const vec2 &pointA, const vec2 &pointB, const vec4 &color = vec4(1.f, 0.5f, 0.5f, 1.f));
+        explicit Square(const vec2 &pointA, const vec2 &pointB, const vec4 &color = vec4(1.f));
         
         
         void render(const Shader &shaderProgram);

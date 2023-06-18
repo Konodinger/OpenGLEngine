@@ -95,3 +95,15 @@ void Shader::setVec3(const char *name, vec3 value) const {
 void Shader::setVec4(const char *name, vec4 value) const {
     glUniform4f(glGetUniformLocation(ID, name), value.x, value.y, value.z, value.w);
 }
+
+void Shader::setMat2(const char *name, mat2 value) const {
+    glUniformMatrix2fv(glGetUniformLocation(ID, name), 1, GL_FALSE, value_ptr(value));
+}
+
+void Shader::setMat3(const char *name, mat3 value) const {
+    glUniformMatrix3fv(glGetUniformLocation(ID, name), 1, GL_FALSE, value_ptr(value));
+}
+
+void Shader::setMat4(const char *name, mat4 value) const {
+    glUniformMatrix4fv(glGetUniformLocation(ID, name), 1, GL_FALSE, value_ptr(value));
+}

@@ -25,6 +25,9 @@ class Shader {
         void setVec2(const char *name, vec2 value) const;
         void setVec3(const char *name, vec3 value) const;
         void setVec4(const char *name, vec4 value) const;
+        void setMat2(const char *name, mat2 value) const;
+        void setMat3(const char *name, mat3 value) const;
+        void setMat4(const char *name, mat4 value) const;
 
         GLuint ID;
 

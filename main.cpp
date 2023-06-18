@@ -9,10 +9,16 @@
 #include "KeyboardInput.hpp"
 #include "Shader.hpp"
 #include "Square.hpp"
+#include "Mesh.hpp"
+#include "Camera.hpp"
+#include "Renderer.hpp"
+
+Renderer *renderer;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
+    renderer->getCamera().setAspectRatio(static_cast<float>(width)/static_cast<float>(height));
 };
 
 int main()
@@ -38,14 +44,26 @@ int main()
         return -1;
     }
 
-    Shader shaderProgram("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl"); 
+    Shader shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl"); 
 
     glViewport(0, 0, 800, 600);
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
     //Geometry part
 
-    Square squareMesh(vec2(-0.5f, -0.5f), vec2(0.5f, 0.5f));
+    Mesh cube = Mesh();
+    cube.setColor(vec4(1.f, 0.5f, 0.5f, 1.f));
+    cube.becomesCube();
+    //Square squareMesh(vec2(-0.5f, -0.5f), vec2(0.5f, 0.5f), vec4(1.f, 0.5f, 0.5f, 1.f));
+
+    //Scene part
+    Camera cam;
+
+    renderer = new Renderer(window, cam, shader);
+    renderer->addMesh(&cube);
+
+    renderer->initCamera();
+    renderer->init();
 
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  
@@ -55,7 +73,9 @@ int main()
 
         glClear(GL_COLOR_BUFFER_BIT);
 
-        squareMesh.render(shaderProgram);
+        renderer->render();
+        //cube.render(shader);
+        //squareMesh.render(shaderProgram);
 
         glfwPollEvents();
         glfwSwapBuffers(window);
