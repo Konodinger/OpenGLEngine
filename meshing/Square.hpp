@@ -1,14 +1,12 @@
 #ifndef ___SQUARE___
 #define ___SQUARE___
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
+class Square;
+#include "utils.hpp"
 
 #include <vector>
 #include "Shader.hpp"
+#include "WorldWindow.hpp"
 
 using namespace glm;
 

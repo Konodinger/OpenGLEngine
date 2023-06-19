@@ -1,23 +1,14 @@
 #ifndef ___RENDERER___
 #define ___RENDERER___
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
+class Renderer;
+#include "utils.hpp"
 
 #include <list>
 #include "Camera.hpp"
+#include "Shader.hpp"
 #include "Mesh.hpp"
-
-inline int getOpenGLErrorNoAssert(const char * where) {
-  int error = glGetError();
-  if(error != GL_NO_ERROR) {
-    std::cout << "GL Error detected : " << where << " : " << error << std::endl;
-  }
-  return error;
-}
+#include "WorldWindow.hpp"
 
 class Renderer {
     public:

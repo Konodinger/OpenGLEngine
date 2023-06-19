@@ -1,6 +1,7 @@
 #include "Mesh.hpp"
 #include "MeshCustomize.hpp"
 #include "MeshCube.hpp"
+#include "MeshSphere.hpp"
 #include <iostream>
 
 Mesh::~Mesh() {

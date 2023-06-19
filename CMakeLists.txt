@@ -49,6 +49,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE input/)
 target_include_directories(${PROJECT_NAME} PRIVATE meshing/)
 target_include_directories(${PROJECT_NAME} PRIVATE rendering/)
 target_include_directories(${PROJECT_NAME} PRIVATE shading/)
+target_include_directories(${PROJECT_NAME} PRIVATE utils/)
 target_include_directories(${PROJECT_NAME} PRIVATE window/)
 
 add_custom_command(TARGET ${PROJECT_NAME}

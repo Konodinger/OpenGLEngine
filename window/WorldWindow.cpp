@@ -24,7 +24,7 @@ int WWindow::init() {
         return -1;
     }
 
-    Shader *shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl"); 
+    Shader *shader = new Shader("shaders/vertexShader.glsl", "shaders/fragmentShader.glsl"); 
 
     glViewport(0, 0, 800, 600);
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -35,13 +35,17 @@ int WWindow::init() {
     Mesh *cube = new Mesh();
     cube->setColor(vec4(1.f, 0.5f, 0.5f, 1.f));
     cube->becomesCube();
+    Mesh *sphere = new Mesh();
+    sphere->setColor(vec4(0.5f, 0.4, 0.f, 1.f));
+    sphere->becomesSphere(vec3(1.f, 1.f, 1.f), 0.5f, 8);
     //Square squareMesh(vec2(-0.5f, -0.5f), vec2(0.5f, 0.5f), vec4(1.f, 0.5f, 0.5f, 1.f));
 
     //Scene part
-    Camera *cam;
-
+    Camera *cam = new Camera();
+    
     _renderer = new Renderer(_window, *cam, *shader);
     _renderer->addMesh(cube);
+    _renderer->addMesh(sphere);
 
     _renderer->initCamera();
     _renderer->init();

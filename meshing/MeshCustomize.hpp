@@ -23,14 +23,14 @@ vector<GLuint> Mesh::addVerticesWithIndex(const vector<vec3> &newVertices, bool 
     if (allowDouble) {
         for (vec3 ver : newVertices) {
             _vertices.push_back(ver);
-            coord.push_back(++posBack);
+            coord.push_back(posBack++);
         }
     } else {
         for (vec3 ver : newVertices) {
             vector<vec3>::iterator pos = find(_vertices.begin(), _vertices.end(), ver);
             if (pos == _vertices.end()) {
                 _vertices.push_back(ver);
-                coord.push_back(++posBack);
+                coord.push_back(posBack++);
             } else {
                 coord.push_back(std::distance(_vertices.begin(), pos));
             }
@@ -47,6 +47,10 @@ void Mesh::addIndices(const vector<GLuint> &newIndices) {
 
 void Mesh::addTriangle(const vector<vec3> &newVertices, bool allowDouble) {
     vector<GLuint> indices = addVerticesWithIndex(newVertices, allowDouble);
+    for (GLuint i : indices) {
+        cout << i << " ";
+    }
+    cout << endl;
     addIndices(indices);
 }
 

@@ -1,11 +1,8 @@
 #ifndef ___CAMERA___
 #define ___CAMERA___
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
+class Camera;
+#include "utils.hpp"
 
 class Camera {
 public:

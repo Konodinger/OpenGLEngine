@@ -1,13 +1,9 @@
 #ifndef ___SHADER___
 #define ___SHADER___
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+class Shader;
+#include "utils.hpp"
 
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
-
-#include <iostream>
 #include <fstream>
 #include <sstream>
 

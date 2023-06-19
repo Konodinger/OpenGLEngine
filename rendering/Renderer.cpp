@@ -15,7 +15,6 @@ void Renderer::init() {
     for (auto &mesh : _meshSet) {
         mesh->init();
     }
-    getOpenGLErrorNoAssert("Mesh initialization.");
 }
 
 void Renderer::render() {

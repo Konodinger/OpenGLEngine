@@ -1,17 +1,11 @@
 #ifndef ___WORLDWINDOW___
 #define ___WORLDWINDOW___
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
-
-#include <iostream>
+class WWindow;
+#include "utils.hpp"
 
 #include "KeyboardInputWindow.hpp"
 #include "Shader.hpp"
-#include "Square.hpp"
 #include "Mesh.hpp"
 #include "Camera.hpp"
 #include "Renderer.hpp"

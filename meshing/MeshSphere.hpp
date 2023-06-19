@@ -2,14 +2,34 @@
 #define ___MESHSPHERE___
 
 #include "Mesh.hpp"
+#include "utilsMaths.hpp"
 
-void convertSpherical(float r, float t, float p, std::vector<float> & v) { // v is the cartesian coordinates conversion of the spherical coordinates (r, t, p)
-  r = abs(r);
-  v.push_back(r * sin(t) * cos(p));
-  v.push_back(r * sin(t) * sin(p));
-  v.push_back(r * cos(t));
+void Mesh::becomesSphere(const vec3 &center, const GLfloat &radius, const GLuint detail) {
+    _vertices.clear();
+    _indices.clear();
+
+    vector<vec3> sphereVertices;
+
+    for (float theta = 0.; theta < detail; theta +=1.) {
+        for (float phi = 0.; phi < detail; phi += 1.) {
+            if (theta > 0.) {
+                sphereVertices.push_back(center + convertSpherical(radius, (theta/detail*M_PI), (phi/detail*2*M_PI)));
+                sphereVertices.push_back(center + convertSpherical(radius, ((theta+1)/detail*M_PI), (phi/detail*2*M_PI)));
+                sphereVertices.push_back(center + convertSpherical(radius, (theta/detail*M_PI), ((phi+1)/detail*2*M_PI)));
+                addTriangle(sphereVertices, false);
+                sphereVertices.clear();
+            }
+            if (theta + 1 < detail) {
+                sphereVertices.push_back(center + convertSpherical(radius, ((theta+1)/detail*M_PI), (phi/detail*2*M_PI)));
+                sphereVertices.push_back(center + convertSpherical(radius, ((theta+1)/detail*M_PI), ((phi+1)/detail*2*M_PI)));
+                sphereVertices.push_back(center + convertSpherical(radius, (theta/detail*M_PI), ((phi+1)/detail*2*M_PI)));
+                addTriangle(sphereVertices, false);
+                sphereVertices.clear();
+            }
+        }
+    }
+
 }
-
 
 
 #endif /* ___MESHSPHERE___ */

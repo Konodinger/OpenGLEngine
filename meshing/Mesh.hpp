@@ -1,16 +1,14 @@
 #ifndef ___MESH___
 #define ___MESH___
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
+class Mesh;
+#include "utils.hpp"
 
 #include <vector>
 #include <algorithm>
 #include "Shader.hpp"
 #include "Transformation.hpp"
+#include "WorldWindow.hpp"
 
 using namespace glm;
 using namespace std;
@@ -35,6 +33,7 @@ class Mesh {
         void render(const Shader &shaderProgram);
 
         void becomesCube(const vec3 &pointA = vec3(-.5f, -.5f, -.5f), const vec3 &pointB = vec3(.5f, .5f, .5f));
+        void becomesSphere(const vec3 &center = vec3(0.f), const GLfloat &radius = 0.5f, const GLuint detail = 16);
 
     private:
         vector<vec3> _vertices;
