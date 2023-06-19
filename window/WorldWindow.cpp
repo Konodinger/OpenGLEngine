@@ -37,7 +37,7 @@ int WWindow::init() {
     cube->becomesCube();
     Mesh *sphere = new Mesh();
     sphere->setColor(vec4(0.5f, 0.4, 0.f, 1.f));
-    sphere->becomesSphere(vec3(1.f, 1.f, 1.f), 0.5f, 8);
+    sphere->becomesSphere(vec3(1.f, 1.f, 1.f), 0.5f, 4);
     //Square squareMesh(vec2(-0.5f, -0.5f), vec2(0.5f, 0.5f), vec4(1.f, 0.5f, 0.5f, 1.f));
 
     //Scene part
@@ -50,10 +50,7 @@ int WWindow::init() {
     _renderer->initCamera();
     _renderer->init();
 
-
     glfwSetFramebufferSizeCallback(_window, framebuffer_size_callback); 
-
-
 
     return 0;
 }
@@ -61,7 +58,6 @@ int WWindow::init() {
 int WWindow::loop() {
     while(!glfwWindowShouldClose(_window))
     {
-
         glClear(GL_COLOR_BUFFER_BIT);
 
         _renderer->render();
