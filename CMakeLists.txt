@@ -24,7 +24,7 @@ SET(CMAKE_CXX_STANDARD_REQUIRED True)
 SET(CMAKE_BUILD_TYPE "debug")
 add_definitions(-D_MY_OPENGL_IS_33_)
 
-project(testOpenGL)
+project(lilithEngine)
 
 add_executable(${PROJECT_NAME} main.cpp
                                 input/KeyboardInputWindow.cpp
